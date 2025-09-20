@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Тарифы - Полезные снеки</title>
+  <style>
+    :root {
+      --container-width: 1200px;
+      --accent-light: #4CAF50;
+      --accent-orange: #FF9800;
+      --bg-gradient: linear-gradient(135deg, #f9f9f7 0%, #e8f5e9 100%);
+      --text-dark: #2c3e50;
+      --text-light: #666;
+      --white: #fff;
+      --shadow: 0 2px 20px rgba(0,0,0,0.1);
+      --shadow-hover: 0 10px 40px rgba(0,0,0,0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: var(--bg-gradient); color: var(--text-dark); }
+    .container { max-width: var(--container-width); margin: 0 auto; padding: 1rem; }
+
+    /* Header */
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      box-shadow: var(--shadow); padding: 1rem 0; z-index: 1000;
+    }
+    nav { display: flex; justify-content: center; gap: 2rem; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; padding: 0.5rem 1.5rem; border-radius: 25px; transition: 0.3s; }
+    nav a:hover { color: var(--accent-light); background: rgba(76,175,80,0.1); }
+    nav a.active { background: var(--accent-light); color: var(--white); }
+
+    /* Hero */
+    .pricing-hero { text-align: center; padding: 140px 0 40px; }
+    .pricing-hero h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #4CAF50 0%, #2c3e50 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .pricing-hero p { color: var(--text-light); }
+
+    /* Pricing */
+    .pricing-cards {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-top: 40px; flex-wrap: wrap;
+    }
+    .pricing-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  flex: 1 1 300px;
+  max-width: 350px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;   /* делаем карточку флекс-контейнером */
+}
+    .pricing-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+    .pricing-card.popular { border: 3px solid var(--accent-light); }
+    .popular-badge {
+      position: absolute; top: 15px; right: -35px;
+      background: var(--accent-orange); color: white;
+      padding: 0.5rem 2rem; transform: rotate(45deg);
+      font-size: 0.8rem; font-weight: bold;
+    }
+    .plan-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .plan-name { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .plan-price { font-size: 2rem; font-weight: bold; color: var(--accent-light); margin-bottom: 0.5rem; }
+    .plan-period { color: var(--text-light); margin-bottom: 1rem; }
+    .plan-features { list-style: none; margin-bottom: 1.5rem; padding: 0; }
+    .plan-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  flex: 1;                 /* растягиваем список, чтобы кнопка всегда внизу */
+}
+
+    .plan-features li:last-child { border-bottom: none; }
+    .btn-select {
+  background: var(--accent-light);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: auto;         /* прижимает кнопку вниз */
+}
+    .btn-select:hover { background: #3d8b40; }
+
+    /* Footer */
+    footer { text-align: center; padding: 2rem 0; color: var(--text-light); margin-top: 40px; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="features.html">Функции</a>
+    <a href="pricing.html" class="active">Цены</a>
+    <a href="auth.html" id="auth-link">Войти</a>
+    <a href="profile.html" id="profile-link">Профиль</a>
+         <a href="cart.html" id="cart-link">Корзина (0)</a>
+  </nav>
+</header>
+
+<section class="pricing-hero">
+  <div class="container">
+    <h1>Выберите свой тариф</h1>
+    <p>Найдите идеальный план для ваших потребностей в полезных перекусах</p>
+  </div>
+</section>
+
+<section class="pricing-cards container">
+  <!-- Free -->
+  <div class="pricing-card">
+    <div class="plan-icon">🎯</div>
+    <h2 class="plan-name">Free</h2>
+    <div class="plan-price">0₽</div>
+    <div class="plan-period">навсегда</div>
+    <ul class="plan-features">
+      <li>Поиск и избранное</li>
+      <li>Базовый каталог снеков</li>
+      <li>Чтение отзывов</li>
+      <li>Обычная доставка</li>
+    </ul>
+    <button class="btn-select">Выбрать</button>
+  </div>
+
+  <!-- Pro -->
+  <div class="pricing-card popular" style="position: relative;">
+    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
+    <div class="plan-icon">🚀</div>
+    <h2 class="plan-name">Pro</h2>
+    <div class="plan-price">499₽</div>
+    <div class="plan-period">в месяц</div>
+    <ul class="plan-features">
+      <li>Все возможности Free</li>
+      <li>Эксклюзивные скидки</li>
+      <li>Подписка на боксы</li>
+      <li>Приоритетная доставка</li>
+      <li>Персональные рекомендации</li>
+    </ul>
+    <button class="btn-select">Выбрать</button>
+  </div>
+
+  <!-- Business -->
+  <div class="pricing-card">
+    <div class="plan-icon">🏢</div>
+    <h2 class="plan-name">Business</h2>
+    <div class="plan-price">2999₽</div>
+    <div class="plan-period">в месяц</div>
+    <ul class="plan-features">
+      <li>Все возможности Pro</li>
+      <li>Оптовые поставки</li>
+      <li>Индивидуальные боксы</li>
+      <li>Персональный менеджер</li>
+      <li>Бесплатная доставка</li>
+    </ul>
+    <button class="btn-select">Выбрать</button>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Полезные снеки. Все права защищены.</p>
+  </div>
+</footer>
+<script>
+/* ======= Вход / профиль ======= */
+const authLink = document.getElementById("auth-link");
+const profileLink = document.getElementById("profile-link");
+
+if (localStorage.getItem("currentUser")) {
+  authLink.style.display = "none";
+  profileLink.style.display = "inline-block";
+} else {
+  authLink.style.display = "inline-block";
+  profileLink.style.display = "none";
+}
+function updateCartCount(){
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
+  const cartLink = document.getElementById("cart-link");
+  if(cartLink) cartLink.textContent = `Корзина (${totalQty})`;
+}
+updateCartCount();
+
+</script>
+
+</body>
+</html>
